@@ -1,0 +1,465 @@
+/* ==========================================================================
+   AJITH-TECHVERSE // RESPONSIVE STYLESHEET (responsive.css)
+   Mobile, Tablet, and High-DPI Display Adaptations
+   ========================================================================== */
+
+/* Tablet & Medium Displays (768px to 1100px) */
+@media screen and (max-width: 1100px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-strong);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+    display: none; /* Toggled by jQuery */
+    box-shadow: var(--shadow-lg);
+    z-index: 99;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+  }
+
+  .mobile-only-doc {
+    display: block;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  .mobile-only-doc a {
+    color: var(--accent-orange) !important;
+    font-weight: 700;
+  }
+
+  .nav-actions .btn-terminal-quick {
+    display: none;
+  }
+
+  /* Two-column layout with reduced gap and typography */
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .hero-content {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-visual-col {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+    line-height: 1.15;
+  }
+
+  .hero-introduction {
+    font-size: 0.92rem;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    padding: 10px 18px;
+    font-size: 0.88rem;
+  }
+
+  .three-canvas-container {
+    height: 250px;
+  }
+
+  .core-disciplines-grid {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .core-discipline-card {
+    padding: 8px 10px;
+  }
+
+  .disc-title {
+    font-size: 0.8rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .about-photo-wrapper {
+    max-width: 380px;
+  }
+
+  .specializations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card.featured-wide {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.featured-wide .project-thumb-wrapper {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .project-card.featured-wide .project-thumb-wrapper img {
+    height: 280px;
+    min-height: auto;
+  }
+
+  .cert-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .github-repos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Screens (<= 768px) */
+@media screen and (max-width: 768px) {
+  .top-lab-ribbon {
+    display: none;
+  }
+
+  /* Stacked layout: Headline first, 3D panel below it */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: left;
+  }
+
+  .hero-content {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-visual-col {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.65rem, 5vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  .hero-introduction {
+    font-size: 0.95rem;
+  }
+
+  .three-canvas-container {
+    height: 240px;
+  }
+
+  .core-disciplines-grid {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .core-discipline-card {
+    padding: 10px 12px;
+  }
+
+  .disc-title {
+    font-size: 0.82rem;
+  }
+
+  .disc-desc {
+    font-size: 0.68rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-grid-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .github-repos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-grid-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content-card {
+    padding: 24px;
+  }
+
+  .education-timeline::before {
+    left: 18px;
+  }
+
+  .edu-item {
+    gap: 16px;
+  }
+
+  .edu-node {
+    width: 38px;
+    height: 38px;
+    font-size: 0.75rem;
+  }
+
+  .edu-card {
+    padding: 20px;
+  }
+
+  .resume-paper,
+  .biodata-paper {
+    padding: 30px 20px;
+  }
+
+  .resume-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .resume-candidate-name {
+    font-size: 1.8rem;
+  }
+
+  .biodata-photo-corner,
+  .biodata-photo-container {
+    width: 100px;
+    height: 120px;
+    margin: 0;
+  }
+
+  .biodata-table td.label-col {
+    width: 140px;
+  }
+
+  .chatbot-panel {
+    width: calc(100vw - 32px);
+    right: -10px;
+    height: 480px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Small Screens & Large Handsets (<= 580px) */
+@media screen and (max-width: 580px) {
+  .hero-grid {
+    gap: 26px;
+  }
+
+  .three-canvas-container {
+    height: 220px;
+  }
+
+  .core-disciplines-grid {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .core-discipline-card {
+    padding: 8px 10px;
+  }
+
+  .disc-num {
+    font-size: 0.62rem;
+  }
+
+  .disc-badge {
+    font-size: 0.55rem;
+    padding: 0 4px;
+  }
+
+  .disc-title {
+    font-size: 0.75rem;
+    line-height: 1.15;
+  }
+
+  .disc-desc {
+    display: none;
+  }
+
+  .core-active-status-bar {
+    font-size: 0.68rem;
+    padding: 6px 12px;
+  }
+
+  .status-indicator-tag {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+
+  .status-indicator-text {
+    font-size: 0.68rem;
+  }
+
+  .core-interaction-bar {
+    bottom: 6px;
+    font-size: 0.62rem;
+    padding: 3px 10px;
+  }
+
+  .nav-docs-group .nav-doc-btn {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Compact Smartphones (<= 480px) */
+@media screen and (max-width: 480px) {
+  .hero-headline {
+    font-size: clamp(1.45rem, 5.8vw, 1.85rem);
+  }
+
+  .three-canvas-container {
+    height: 200px;
+  }
+
+  .nav-docs-group {
+    gap: 4px;
+  }
+
+  .nav-docs-group .nav-doc-btn {
+    padding: 3px 6px;
+    font-size: 0.66rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-socials {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .terminal-screen {
+    font-size: 0.78rem;
+    padding: 14px;
+    min-height: 300px;
+  }
+
+  .spec-card {
+    padding: 20px;
+  }
+
+  .project-card-body {
+    padding: 20px;
+  }
+
+  .resume-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* Ultra-Compact Handsets (<= 360px) */
+@media screen and (max-width: 360px) {
+  .hero-headline {
+    font-size: 1.35rem;
+  }
+
+  .nav-docs-group {
+    display: none;
+  }
+
+  .core-disciplines-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 6px;
+  }
+
+  .core-discipline-card {
+    padding: 6px 6px;
+  }
+
+  .disc-title {
+    font-size: 0.7rem;
+  }
+
+  .brand-badge {
+    font-size: 0.92rem;
+    padding: 2px 6px;
+  }
+
+  .brand-name {
+    font-size: 0.8rem;
+  }
+}
+
+/* Reduced Motion Preference Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .radar-hand,
+  .status-dot,
+  .scroll-wheel::after {
+    animation: none !important;
+  }
+}

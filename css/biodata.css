@@ -1,0 +1,368 @@
+/* ==========================================================================
+   AJITH-TECHVERSE // BIO-DATA STYLESHEET (biodata.css)
+   Personal Bio-data, Academic Records & Privacy Shield System
+   ========================================================================== */
+
+.biodata-page-wrapper {
+  padding: 40px 0 80px;
+}
+
+.biodata-control-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.privacy-toggle-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.privacy-toggle-btn.shield-on {
+  background: var(--accent-lime-subtle);
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+}
+
+.privacy-toggle-btn.shield-off {
+  background: var(--accent-orange-subtle);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+}
+
+.biodata-paper {
+  background: #FFFFFF;
+  color: #121316;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 56px 64px;
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+}
+
+[data-theme="dark"] .biodata-paper {
+  background: #151820;
+  color: #ECEFF4;
+  border-color: #2D3242;
+}
+
+/* Biodata Header - Flexbox Layout */
+.biodata-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 2px solid #121316;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+[data-theme="dark"] .biodata-header {
+  border-bottom-color: #4A5166;
+}
+
+.biodata-header-text {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.biodata-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.biodata-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  letter-spacing: 0.08em;
+}
+
+/* Photo Container - Fixed Size & Self-Contained */
+.biodata-photo-container,
+.biodata-photo-corner {
+  width: 110px;
+  height: 130px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #EFEFEA;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.biodata-photo-container img,
+.biodata-photo-corner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Responsive Header for Mobile Screens */
+@media screen and (max-width: 640px) {
+  .biodata-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 18px;
+  }
+
+  .biodata-photo-container,
+  .biodata-photo-corner {
+    width: 100px;
+    height: 120px;
+  }
+
+  .biodata-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Data Tables */
+.biodata-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 28px;
+  font-size: 0.92rem;
+}
+
+.biodata-table th,
+.biodata-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.biodata-table th {
+  background: var(--bg-surface-elevated);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+[data-theme="dark"] .biodata-table th {
+  background: #1C202C;
+}
+
+.biodata-table td.label-col {
+  width: 220px;
+  font-weight: 600;
+  background: var(--bg-surface-subtle);
+  font-family: var(--font-heading);
+}
+
+[data-theme="dark"] .biodata-table td.label-col {
+  background: #171A24;
+}
+
+/* Sensitive Data Shielding */
+.shielded-text {
+  font-family: var(--font-mono);
+  background: var(--bg-surface-elevated);
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  user-select: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.shielded-text:hover {
+  color: var(--accent-orange);
+}
+
+.shielded-text.revealed {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  letter-spacing: normal;
+  user-select: auto;
+}
+
+.shielded-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shielded-text.revealed a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.shielded-text.revealed a:hover {
+  color: var(--accent-orange);
+}
+
+/* Hobbies Tag Cloud */
+.hobby-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hobby-pill {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  border-radius: 99px;
+  color: var(--text-primary);
+}
+
+/* Formal Declaration Box */
+.declaration-box {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  margin-top: 36px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.declaration-box h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.declaration-signoff {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 32px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.signature-stamp {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--accent-orange);
+  letter-spacing: 0.05em;
+  border-top: 1px dashed var(--border-strong);
+  padding-top: 6px;
+}
+
+/* Print Rules for Bio-data */
+@media print {
+  .top-lab-ribbon,
+  .site-nav,
+  .biodata-control-bar,
+  .site-footer,
+  .chatbot-widget-container,
+  .btn,
+  .btn-terminal-quick,
+  .theme-toggle-btn {
+    display: none !important;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .biodata-paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .biodata-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20pt !important;
+    border-bottom: 2pt solid #000000 !important;
+    padding-bottom: 12pt !important;
+    margin-bottom: 18pt !important;
+  }
+
+  .biodata-header-text {
+    flex: 1 !important;
+    text-align: left !important;
+  }
+
+  .biodata-title {
+    color: #000000 !important;
+    font-size: 20pt !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .biodata-subtitle {
+    color: #333333 !important;
+    font-size: 8.5pt !important;
+  }
+
+  .biodata-photo-container,
+  .biodata-photo-corner {
+    width: 95px !important;
+    height: 115px !important;
+    flex-shrink: 0 !important;
+    border: 1pt solid #000000 !important;
+    box-shadow: none !important;
+    background: #FFFFFF !important;
+    position: static !important;
+  }
+
+  .biodata-photo-container img,
+  .biodata-photo-corner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .shielded-text {
+    background: none !important;
+    padding: 0 !important;
+    letter-spacing: normal !important;
+    color: #000000 !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+}

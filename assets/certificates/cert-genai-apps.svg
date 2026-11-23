@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="g-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1C23"/>
+      <stop offset="100%" stop-color="#121318"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="320" height="200" rx="8" fill="url(#g-grad2)" stroke="#2B2F3D" stroke-width="1.2"/>
+  
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="12" height="4" fill="#4285F4" rx="2"/>
+    <rect x="16" y="0" width="12" height="4" fill="#EA4335" rx="2"/>
+    <rect x="32" y="0" width="12" height="4" fill="#FBBC04" rx="2"/>
+    <rect x="48" y="0" width="12" height="4" fill="#34A853" rx="2"/>
+    <text x="70" y="6" fill="#8C93A8" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="bold">GOOGLE CLOUD SKILLS BOOST</text>
+  </g>
+
+  <g transform="translate(30, 60)">
+    <circle cx="28" cy="28" r="28" fill="#1E2330" stroke="#B8FF00" stroke-width="2"/>
+    <!-- App Matrix Icon -->
+    <rect x="18" y="18" width="8" height="8" rx="2" fill="#B8FF00"/>
+    <rect x="30" y="18" width="8" height="8" rx="2" fill="#B8FF00"/>
+    <rect x="18" y="30" width="8" height="8" rx="2" fill="#B8FF00"/>
+    <rect x="30" y="30" width="8" height="8" rx="2" fill="#FF5500"/>
+  </g>
+
+  <g transform="translate(100, 60)">
+    <text x="0" y="16" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="bold">Gen AI Apps:</text>
+    <text x="0" y="34" fill="#B8FF00" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="bold">Transform Your Work</text>
+    <text x="0" y="54" fill="#7E8599" font-family="'JetBrains Mono', monospace" font-size="9">ISSUER: GOOGLE CLOUD</text>
+    <text x="0" y="68" fill="#B8FF00" font-family="'JetBrains Mono', monospace" font-size="9">VERIFIED CREDENTIAL ✓</text>
+  </g>
+
+  <rect x="20" y="150" width="280" height="30" rx="4" fill="#161922" stroke="#252A38" stroke-width="0.8"/>
+  <text x="32" y="169" fill="#8C93A8" font-family="'JetBrains Mono', monospace" font-size="10">Gemini // Workspace AI // Prompt Engineering</text>
+</svg>
