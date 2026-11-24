@@ -417,7 +417,7 @@
   // EmailJS Configuration
   const EMAILJS_CONFIG = {
     serviceId: 'service_3odtnj5',
-    templateId: 'template_goixeeb',
+    templateId: 'template_goeixeb',
     publicKey: 'WkjSDKWgqbrnQgOc2',
     recipientEmail: 'mrajithsagar123@gmail.com'
   };
