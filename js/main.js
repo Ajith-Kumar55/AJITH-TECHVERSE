@@ -424,7 +424,7 @@
 
   // Expose configuration object globally so credentials can also be set or verified via window.EMAILJS_CONFIG
   if (typeof window !== 'undefined') {
-    window.EMAILJS_CONFIG = EMAILJS_CONFIG;
+    window.EMAILJS_CONFIG = window.EMAILJS_CONFIG || EMAILJS_CONFIG;
   }
 
   // 8. Contact Form Validation with Direct EmailJS Integration
@@ -433,9 +433,10 @@
     if (!$form.length) return;
 
     // Initialize EmailJS with Public Key
+    const cfg = (typeof window !== 'undefined' && window.EMAILJS_CONFIG) ? window.EMAILJS_CONFIG : EMAILJS_CONFIG;
     if (typeof emailjs !== 'undefined') {
       try {
-        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        emailjs.init({ publicKey: cfg.publicKey });
       } catch (err) {
         console.warn('[EmailJS] Initialization notice:', err);
       }
@@ -494,11 +495,12 @@
 
       const $submitBtn = $form.find('button[type="submit"]');
       const originalBtnText = $submitBtn.html();
+      const activeConfig = (typeof window !== 'undefined' && window.EMAILJS_CONFIG) ? window.EMAILJS_CONFIG : EMAILJS_CONFIG;
 
       if (typeof emailjs === 'undefined') {
         $alert.removeClass('success').addClass('error').html(`
           <strong>TRANSMISSION FAILED // SDK UNAVAILABLE</strong><br>
-          EmailJS SDK could not be loaded. Please verify your connection or transmit directly to <a href="mailto:${escapeHtml(EMAILJS_CONFIG.recipientEmail)}" style="color:var(--accent-orange); text-decoration:underline;">${escapeHtml(EMAILJS_CONFIG.recipientEmail)}</a>.
+          EmailJS SDK could not be loaded. Please verify your connection or transmit directly to <a href="mailto:${escapeHtml(activeConfig.recipientEmail)}" style="color:var(--accent-orange); text-decoration:underline;">${escapeHtml(activeConfig.recipientEmail)}</a>.
         `).fadeIn(300);
         return;
       }
@@ -518,21 +520,21 @@
         reply_to: emailVal,
         user_name: nameVal,
         user_email: emailVal,
-        to_email: 'mrajithsagar123@gmail.com',
+        to_email: activeConfig.recipientEmail,
         time_stamp: new Date().toLocaleString()
       };
 
       emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
+        activeConfig.serviceId,
+        activeConfig.templateId,
         templateParams,
-        EMAILJS_CONFIG.publicKey
+        { publicKey: activeConfig.publicKey }
       ).then(function (response) {
         // Show success message ONLY after EmailJS confirms successful delivery
         $submitBtn.prop('disabled', false).html(originalBtnText);
         $alert.removeClass('error').addClass('success').html(`
           <strong>TRANSMISSION DELIVERED // DISPATCH CONFIRMED</strong><br>
-          Thank you, ${escapeHtml(nameVal)}! Your message has been successfully delivered to Ajith's Gmail (<strong>mrajithsagar123@gmail.com</strong>). A response will be dispatched promptly.
+          Thank you, ${escapeHtml(nameVal)}! Your message has been successfully delivered to Ajith's Gmail (<strong>${escapeHtml(activeConfig.recipientEmail)}</strong>). A response will be dispatched promptly.
         `).fadeIn(300);
 
         $form[0].reset();
@@ -544,11 +546,15 @@
         // Show clear error message if sending fails
         $submitBtn.prop('disabled', false).html(originalBtnText);
         const errDetail = error && (error.text || error.message || (typeof error === 'string' ? error : ''));
+        let errHint = '';
+        if (errDetail && errDetail.toLowerCase().includes('template id not found')) {
+          errHint = `<br><span style="font-size:0.85em; opacity:0.9;">Template ID '<strong>${escapeHtml(activeConfig.templateId)}</strong>' was not found on EmailJS for account key <strong>${escapeHtml(activeConfig.publicKey)}</strong>. In EmailJS Dashboard, verify under Templates &rarr; Settings that the ID matches and has been Saved.</span>`;
+        }
         const errString = errDetail ? ` (${escapeHtml(errDetail)})` : '';
         $alert.removeClass('success').addClass('error').html(`
           <strong>TRANSMISSION FAILED // DISPATCH ERROR</strong><br>
-          Unable to deliver message to <strong>mrajithsagar123@gmail.com</strong>${errString}.<br>
-          Please verify your connection or transmit directly to <a href="mailto:mrajithsagar123@gmail.com" style="color:var(--accent-orange); text-decoration:underline;">mrajithsagar123@gmail.com</a>.
+          Unable to deliver message to <strong>${escapeHtml(activeConfig.recipientEmail)}</strong>${errString}.${errHint}<br>
+          Please verify your connection or transmit directly to <a href="mailto:${escapeHtml(activeConfig.recipientEmail)}" style="color:var(--accent-orange); text-decoration:underline;">${escapeHtml(activeConfig.recipientEmail)}</a>.
         `).fadeIn(300);
       });
     });
